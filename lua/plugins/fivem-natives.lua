@@ -18,9 +18,7 @@ return {
               workspace = {
                 library = {
                   [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                  [vim.fn.expand(
-                    "../../fivem-library/"
-                  )] = true,
+                  [vim.fn.expand(vim.fn.stdpath("config") .. "/fivem-library/")] = true,
                 },
               },
             },

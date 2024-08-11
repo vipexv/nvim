@@ -284,18 +284,18 @@ function GetNthClosestVehicleNode(x, y, z, nthClosest, outPosition, unknown1, un
 ---@param p11 any
 ---@return boolean, vector3, number
 function GetNthClosestVehicleNodeFavourDirection(
-	x,
-	y,
-	z,
-	desiredX,
-	desiredY,
-	desiredZ,
-	nthClosest,
-	outPosition,
-	outHeading,
-	nodetype,
-	p10,
-	p11
+  x,
+  y,
+  z,
+  desiredX,
+  desiredY,
+  desiredZ,
+  nthClosest,
+  outPosition,
+  outHeading,
+  nodetype,
+  p10,
+  p11
 )
 end
 
@@ -347,16 +347,16 @@ function GetNthClosestVehicleNodeIdWithHeading(x, y, z, nthClosest, outPosition,
 ---@param unknown4 number
 ---@return boolean, vector3, number, any
 function GetNthClosestVehicleNodeWithHeading(
-	x,
-	y,
-	z,
-	nthClosest,
-	outPosition,
-	heading,
-	unknown1,
-	unknown2,
-	unknown3,
-	unknown4
+  x,
+  y,
+  z,
+  nthClosest,
+  outPosition,
+  heading,
+  unknown1,
+  unknown2,
+  unknown3,
+  unknown4
 )
 end
 
