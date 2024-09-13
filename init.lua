@@ -1,4 +1,4 @@
-local name = "gruvbox"
+local name = "vesper"
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 vim.opt.termguicolors = true

@@ -27,6 +27,7 @@ require("lazy").setup({
       end,
     },
   },
+
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
     lazy = false,
