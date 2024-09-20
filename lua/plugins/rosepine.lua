@@ -1,7 +1,14 @@
 return {
-	'rebelot/kanagawa.nvim',
-	as = 'kanagawa',
+        <WaterDropIcon
+          size={settingsState.iconSize}
+          value={playerState.thirst}
+          fillColor={settingsState.colors.water}
+        />
+	"rebelot/kanagawa.nvim",
 	config = function()
-		vim.cmd('colorscheme kanagawa-dragon')
-	end
+		require("kanagawa").setup({
+			theme = "dragon",
+			transparent = true,
+		})
+	end,
 }
