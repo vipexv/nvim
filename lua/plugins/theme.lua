@@ -3,7 +3,6 @@ return {
 	config = function()
 		require("kanagawa").setup({
 			theme = "dragon",
-			transparent = true,
 		})
 	end,
 }

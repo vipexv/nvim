@@ -1,3 +1,3 @@
 require("vipex")
 
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme kanagawa-dragon")
