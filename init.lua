@@ -1,3 +1,4 @@
 require("vipex")
 
-vim.cmd("colorscheme kanagawa-dragon")
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])

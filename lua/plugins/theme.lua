@@ -1,8 +1,1 @@
-return {
-	"rebelot/kanagawa.nvim",
-	config = function()
-		require("kanagawa").setup({
-			theme = "dragon",
-		})
-	end,
-}
+return { "ellisonleao/gruvbox.nvim", priority = 1000, config = true }
