@@ -23,3 +23,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+vim.opt.laststatus = 0
+
+vim.opt.showtabline = 2 -- Always show the tabline
