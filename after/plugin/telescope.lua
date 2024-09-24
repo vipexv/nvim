@@ -8,33 +8,6 @@ highlight(0, "FloatBorder", { link = "WinSeparator" })
 highlight(0, "TelescopePromptCounter", { link = "TelescopeNormal" })
 highlight(0, "TelescopeSelection", { link = "TelescopePromptPrefix" })
 
-vim.keymap.set("n", "<leader>pf", telescope_builtin.find_files, {})
-vim.keymap.set("n", "<C-p>", telescope_builtin.git_files, {})
-vim.keymap.set("n", "<leader>ps", function()
-	telescope_builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end, {})
-vim.keymap.set("n", "<leader>fk", function()
-	telescope_builtin.find_files(fk_opts)
-end, {})
-
--- New key mapping for <leader>pe
-vim.keymap.set("n", "<leader>pe", function()
-	telescope_builtin.find_files({ cwd = vim.fn.expand("%:p:h") }) -- Sets the cwd to the current file's directory
-end, {})
-
--- New key mapping for <leader>pc
-vim.keymap.set("n", "<leader>pc", function()
-	telescope_builtin.find_files({ cwd = "C:/Users/v/AppData/Local/nvim/" })
-end, {})
-
-vim.keymap.set("n", "<leader>pr", function()
-	telescope_builtin.find_files({ cwd = vim.fn.getcwd() })
-end, {})
-
-vim.keymap.set("n", "<leader>pg", function()
-	telescope_builtin.grep_string({ cwd = vim.fn.expand("%:p:h"), search = vim.fn.input("Grep > ") })
-end, {})
-
 telescope.setup({
 	defaults = {
 		border = true,
@@ -147,14 +120,60 @@ local set_keymap = function(lhs, rhs, mode)
 end
 
 set_keymap("<F1>", use_layout(telescope_builtin.help_tags, "popup_extended"))
+set_keymap("<leader>pf", use_layout(telescope_builtin.find_files, "popup_extended"))
+set_keymap("<C-p>", use_layout(telescope_builtin.git_files, "popup_extended"))
+set_keymap(
+	"<leader>ps",
+	use_layout(function()
+		telescope_builtin.grep_string({ search = vim.fn.input("Grep > ") })
+	end, "popup_extended")
+)
+
+set_keymap(
+	"<leader>fk",
+	use_layout(function()
+		telescope_builtin.find_files(fk_opts)
+	end, "popup_extended")
+)
+
+-- New key mapping for <leader>pe
+set_keymap(
+	"<leader>pe",
+	use_layout(function()
+		telescope_builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
+	end, "popup_extended")
+)
+
+-- New key mapping for <leader>pc
+set_keymap(
+	"<leader>pc",
+	use_layout(function()
+		telescope_builtin.find_files({ cwd = "C:/Users/v/AppData/Local/nvim/" })
+	end, "popup_extended")
+)
+
+set_keymap(
+	"<leader>pr",
+	use_layout(function()
+		telescope_builtin.find_files({ cwd = vim.fn.getcwd() })
+	end, "popup_extended")
+)
+
+set_keymap(
+	"<leader>pg",
+	use_layout(function()
+		telescope_builtin.grep_string({ cwd = vim.fn.expand("%:p:h"), search = vim.fn.input("Grep > ") })
+	end, "popup_extended")
+)
+
 set_keymap("<leader>q", use_layout(telescope_builtin.quickfix, "ivy_plus"))
 set_keymap("<leader>l", use_layout(telescope_builtin.loclist, "ivy_plus"))
 set_keymap("<leader>t", use_layout(telescope_builtin.builtin, "popup_list"))
-set_keymap("<leader>o", use_layout(telescope_builtin.find_files, "popup_list"))
 set_keymap("<leader>p", use_layout(telescope_builtin.commands, "command_pane"))
 set_keymap("<leader>b", use_layout(telescope_builtin.buffers, "popup_extended"))
 set_keymap("<leader>g", use_layout(telescope_builtin.git_status, "popup_extended"))
 set_keymap("<leader>f", use_layout(telescope_builtin.grep_string, "popup_extended"), "v")
+
 set_keymap(
 	"<leader>F",
 	use_layout(function(opts)
@@ -170,9 +189,8 @@ set_keymap(
 			"--exclude",
 			"node_modules",
 		}
-
 		telescope_builtin.find_files(opts)
-	end, "popup_`st")
+	end, "popup_st")
 )
 
 return use_layout
