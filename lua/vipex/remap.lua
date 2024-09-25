@@ -11,6 +11,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
 vim.keymap.set("n", "<leader>od", ":!explorer .<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>fw", ':lua require("grug-far").open()<CR>', { noremap = true, silent = true })
 vim.keymap.set(
 	"n",
 	"<leader>od",
@@ -29,7 +30,7 @@ vim.keymap.set("n", "<A-8>", "<cmd>BufferLineGoToBuffer 8<CR>", { desc = "Go to 
 vim.keymap.set("n", "<A-9>", "<cmd>BufferLineGoToBuffer 9<CR>", { desc = "Go to Buffer 9" })
 vim.keymap.set("n", "<C-m>", ":%s/\\r//g<CR>")
 
-vim.keymap.set("n", ",c", "<CMD>bp|bd #<CR>", options)
+vim.keymap.set("n", ",c", "<CMD>bp|bd #<CR>")
 
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
