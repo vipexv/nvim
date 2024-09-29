@@ -1,9 +1,16 @@
 return {
-	"aliqyan-21/darkvoid.nvim",
+	"ramojus/mellifluous.nvim",
 	config = function()
-		require("darkvoid").setup({
-			glow = true,
-			transparent = true,
+		require("mellifluous").setup({
+			transparent_background = {
+				enabled = true,
+				floating_windows = true,
+				telescope = true,
+				fieldset = true,
+				cursor_line = true,
+				statusline = true,
+			},
 		})
+		vim.cmd("colorscheme mellifluous")
 	end,
 }

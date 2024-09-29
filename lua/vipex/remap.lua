@@ -10,14 +10,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
-vim.keymap.set("n", "<leader>od", ":!explorer .<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>fw", ':lua require("grug-far").open()<CR>', { noremap = true, silent = true })
-vim.keymap.set(
-	"n",
-	"<leader>od",
-	":!start explorer " .. vim.fn.expand("%:p:h") .. "<CR>",
-	{ noremap = true, silent = true }
-)
+
+vim.keymap.set("n", "<leader>od", function()
+	local path = vim.fn.expand("%:p:h")
+	vim.fn.jobstart({ "cmd.exe", "/c", "start", "", path }, { detach = true })
+end, { desc = "Open Windows file explorer in current directory" })
 
 vim.keymap.set("n", "<A-1>", "<cmd>BufferLineGoToBuffer 1<CR>", { desc = "Go to Buffer 1" })
 vim.keymap.set("n", "<A-2>", "<cmd>BufferLineGoToBuffer 2<CR>", { desc = "Go to Buffer 2" })
