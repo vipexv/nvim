@@ -1,10 +1,12 @@
+local telescopeBuiltIn = require("telescope.builtin")
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
 	callback = function(event)
 		local opts = { buffer = event.buf }
 
 		vim.keymap.set("n", "gd", function()
-			vim.lsp.buf.definition()
+			telescopeBuiltIn.lsp_definitions()
 		end, opts)
 		vim.keymap.set("n", "K", function()
 			vim.lsp.buf.hover()
@@ -25,7 +27,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.lsp.buf.code_action()
 		end, opts)
 		vim.keymap.set("n", "<leader>vrr", function()
-			vim.lsp.buf.references()
+			telescopeBuiltIn.lsp_references()
 		end, opts)
 		vim.keymap.set("n", "<leader>vrn", function()
 			vim.lsp.buf.rename()
