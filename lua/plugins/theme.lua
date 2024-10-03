@@ -1,16 +1,10 @@
 return {
-	"ramojus/mellifluous.nvim",
+	"ellisonleao/gruvbox.nvim",
 	config = function()
-		require("mellifluous").setup({
-			transparent_background = {
-				enabled = true,
-				floating_windows = true,
-				telescope = true,
-				fieldset = true,
-				cursor_line = true,
-				statusline = true,
-			},
+		require("gruvbox").setup({
+			transparent_mode = true,
 		})
-		vim.cmd("colorscheme mellifluous")
+
+		vim.cmd("colorscheme gruvbox")
 	end,
 }
