@@ -6,5 +6,6 @@ require("conform").setup({
 		typescript = { "prettierd" },
 		typescriptreact = { "prettierd" }, -- Add this line
 		svelte = { "prettierd" },
+		json = { "prettierd" },
 	},
 })
