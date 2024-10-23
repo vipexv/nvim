@@ -33,7 +33,7 @@ require("lazy").setup({
 		{ "neovim/nvim-lspconfig" },
 		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
-		{ "hrsh7th/nvim-cmp" },
+		{ "hrsh7th/nvim-cmp", event = "InsertEnter" },
 		{ "hrsh7th/cmp-buffer" },
 		{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
 		{ "saadparwaiz1/cmp_luasnip" },
