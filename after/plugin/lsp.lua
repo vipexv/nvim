@@ -53,6 +53,15 @@ require("mason-lspconfig").setup({
 			})
 		end,
 		lua_ls = function()
+			local fivem_dirs = vim.fn.glob(vim.fn.stdpath("config") .. "/fivem-library/*", 0, 1)
+			local library_paths = {
+				[vim.env.VIMRUNTIME] = true,
+			}
+
+			for _, dir in ipairs(fivem_dirs) do
+				library_paths[dir] = true
+			end
+
 			require("lspconfig").lua_ls.setup({
 				capabilities = lsp_capabilities,
 				settings = {
@@ -64,10 +73,7 @@ require("mason-lspconfig").setup({
 							globals = { "vim" },
 						},
 						workspace = {
-							library = {
-								vim.env.VIMRUNTIME,
-								[vim.fn.expand(vim.fn.stdpath("config") .. "/fivem-library/")] = true,
-							},
+							library = library_paths,
 						},
 					},
 				},
