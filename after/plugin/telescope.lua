@@ -149,7 +149,7 @@ set_keymap(
 set_keymap(
 	"<leader>pc",
 	use_layout(function()
-		telescope_builtin.find_files({ cwd = "C:/Users/v/AppData/Local/nvim/" })
+		telescope_builtin.find_files({ cwd = vim.fn.expand("~") .. "/AppData/Local/nvim/" })
 	end, "popup_extended")
 )
 
