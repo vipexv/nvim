@@ -45,7 +45,7 @@ local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-	ensure_installed = { "ts_ls" },
+	ensure_installed = { "ts_ls", "svelte" },
 	handlers = {
 		function(server_name)
 			require("lspconfig")[server_name].setup({
@@ -77,7 +77,14 @@ require("mason-lspconfig").setup({
 						},
 					},
 				},
-				{ "hrsh7th/cmp-buffer" },
+			})
+		end,
+		svelte = function()
+			require("lspconfig").svelte.setup({
+				capabilities = lsp_capabilities,
+				root_dir = function()
+					return vim.fn.getcwd()
+				end,
 			})
 		end,
 	},
