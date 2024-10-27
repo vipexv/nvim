@@ -195,7 +195,7 @@ function ClampGameplayCamYaw(minimum, maximum) end
 ---*   CUSTOM_TIMED_SPLINE_CAMERA
 ---*   ROUNDED_SPLINE_CAMERA
 ---*   SMOOTHED_SPLINE_CAMERA
----@param camName string
+---@param camName 'DEFAULT_SCRIPTED_CAMERA'|'DEFAULT_ANIMATED_CAMERA'|'DEFAULT_SPLINE_CAMERA'|'DEFAULT_SCRIPTED_FLY_CAMERA'|'TIMED_SPLINE_CAMERA'|'CUSTOM_TIMED_SPLINE_CAMERA'|'ROUNDED_SPLINE_CAMERA'|'SMOOTHED_SPLINE_CAMERA'
 ---@param active boolean
 ---@return integer
 function CreateCam(camName, active) end
