@@ -75,6 +75,7 @@ require("mason-lspconfig").setup({
 						workspace = {
 							library = library_paths,
 						},
+						telemetry = { enable = false },
 					},
 				},
 			})

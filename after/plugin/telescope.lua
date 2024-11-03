@@ -131,21 +131,12 @@ set_keymap(
 )
 
 set_keymap(
-	"<leader>fk",
-	use_layout(function()
-		telescope_builtin.find_files(fk_opts)
-	end, "popup_extended")
-)
-
--- New key mapping for <leader>pe
-set_keymap(
 	"<leader>pe",
 	use_layout(function()
 		telescope_builtin.find_files({ cwd = vim.fn.expand("%:p:h") })
 	end, "popup_extended")
 )
 
--- New key mapping for <leader>pc
 set_keymap(
 	"<leader>pc",
 	use_layout(function()
@@ -154,16 +145,9 @@ set_keymap(
 )
 
 set_keymap(
-	"<leader>pr",
-	use_layout(function()
-		telescope_builtin.find_files({ cwd = vim.fn.getcwd() })
-	end, "popup_extended")
-)
-
-set_keymap(
 	"<leader>pg",
 	use_layout(function()
-		telescope_builtin.grep_string({ cwd = vim.fn.expand("%:p:h"), search = vim.fn.input("Grep > ") })
+		telescope_builtin.grep_string({ search = vim.fn.input("Grep > ") })
 	end, "popup_extended")
 )
 
