@@ -4,6 +4,8 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.backup = false
+vim.opt.writebackup = false
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
