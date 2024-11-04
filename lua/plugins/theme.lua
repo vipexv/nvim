@@ -6,9 +6,11 @@ return {
 	opts = {
 		transparent = true,
 		background = {
+			-- light = "lotus",
 			dark = "wave", -- "wave, dragon"
 		},
 		colors = {
+			palette = {
 				-- Background colors
 				sumiInk0 = "#161616", -- modified
 				sumiInk1 = "#181818", -- modified
@@ -63,20 +65,22 @@ return {
 		},
 	},
 	config = function(_, opts)
-		require("kanagawa").setup(opts)
-		vim.cmd("colorscheme kanagawa")
+		require("kanagawa").setup(opts) -- Replace this with your favorite colorscheme
+		vim.cmd("colorscheme kanagawa") -- Replace this with your favorite colorscheme
 
-        vim.cmd([[
-        autocmd VimEnter * hi DiffAdd guifg=#00FF00 guibg=#005500
-        autocmd VimEnter * hi DiffDelete guifg=#FF0000 guibg=#550000
-        autocmd VimEnter * hi DiffChange guifg=#CCCCCC guibg=#555555
-        autocmd VimEnter * hi DiffText guifg=#00FF00 guibg=#005500
-        ]])
+		-- Custom diff colors
+		vim.cmd([[
+      autocmd VimEnter * hi DiffAdd guifg=#00FF00 guibg=#005500
+      autocmd VimEnter * hi DiffDelete guifg=#FF0000 guibg=#550000
+      autocmd VimEnter * hi DiffChange guifg=#CCCCCC guibg=#555555
+      autocmd VimEnter * hi DiffText guifg=#00FF00 guibg=#005500
+    ]])
 
-        vim.cmd([[
-        autocmd ColorScheme * hi NormalFloat guifg=#F9E7C0 guibg=#1F1F1F
-        autocmd ColorScheme * hi FloatBorder guifg=#F9E7C0 guibg=#1F1F1F
-        ]])
+		-- Custom border colors
+		vim.cmd([[
+      autocmd ColorScheme * hi NormalFloat guifg=#F9E7C0 guibg=#1F1F1F
+      autocmd ColorScheme * hi FloatBorder guifg=#F9E7C0 guibg=#1F1F1F
+    ]])
 	end,
 }
 
