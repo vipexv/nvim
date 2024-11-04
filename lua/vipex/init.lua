@@ -40,9 +40,6 @@ require("lazy").setup({
 		{ "L3MON4D3/LuaSnip" },
 		{ "hrsh7th/cmp-nvim-lsp" },
 	},
-	-- Configure any other settings here. See the documentation for more details.
-	-- colorscheme that will be used when installing plugins.
 	install = {},
-	-- automatically check for plugin updates
 	checker = { enabled = false },
 })
