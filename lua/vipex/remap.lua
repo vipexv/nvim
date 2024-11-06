@@ -11,7 +11,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
-vim.keymap.set("n", "<leader>fw", ':lua require("grug-far").open()<CR>', { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>od", function()
 	local path = vim.fn.expand("%:p:h")
