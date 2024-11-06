@@ -29,15 +29,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>fr", function()
 			telescopeBuiltIn.lsp_references()
 		end, opts)
-		vim.keymap.set("n", "<leader>vrn", function()
-			vim.lsp.buf.rename()
-		end, opts)
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set("i", "<C-h>", function()
 			vim.lsp.buf.signature_help()
 		end, opts)
 		vim.keymap.set("n", "<leader>ve", function()
 			vim.diagnostic.setloclist()
 		end, opts)
+
+		vim.diagnostic.config({
+			virtual_text = true,
+			signs = true,
+			update_in_insert = false,
+			underline = true,
+			severity_sort = true,
+			float = {
+				focusable = false,
+				style = "minimal",
+				border = "rounded",
+				source = true,
+				header = "",
+				prefix = "",
+			},
+		})
 	end,
 })
 
@@ -66,14 +80,34 @@ require("mason-lspconfig").setup({
 				capabilities = lsp_capabilities,
 				settings = {
 					Lua = {
+						hint = {
+							enable = true,
+						},
 						runtime = {
-							version = "Lua 5.4",
+							version = "lua 5.4",
+							nonstandardSymbol = {
+								"+=",
+								"-=",
+								"*=",
+								"/=",
+								"&=",
+								"|=",
+								"^=",
+								"`",
+							},
 						},
 						diagnostics = {
-							globals = { "vim" },
+							globals = { "Citizen", "mysql", "vim", "vector3", "vector2", "vec3", "fx_version" },
 						},
 						workspace = {
 							library = library_paths,
+
+							type = {
+								weakUnionCheck = true,
+								weakNilCheck = true,
+							},
+							maxPreload = 100000,
+							preloadfilesize = 10000,
 						},
 						telemetry = { enable = false },
 					},
@@ -102,8 +136,9 @@ cmp.setup({
 		{ name = "buffer" },
 	}),
 	mapping = cmp.mapping.preset.insert({
-		["<C-n>"] = cmp.mapping.confirm({ select = true }),
-		["<C-y>"] = cmp.mapping.complete(),
+		["<C-y>"] = cmp.mapping.confirm({ select = true }),
+		["<CR>"] = cmp.mapping.confirm({ select = false }),
+		["<C-Space>"] = cmp.mapping.complete(),
 	}),
 	snippet = {
 		expand = function(args)
