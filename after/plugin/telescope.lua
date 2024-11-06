@@ -1,15 +1,15 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
 		file_ignore_patterns = { "node_modules", "build", "dist" },
 		mappings = {
 			i = {
-				["<esc>"] = require("telescope.actions").close,
-				["<C-l>"] = require("telescope.actions").smart_send_to_loclist,
-				["<C-q>"] = require("telescope.actions").smart_send_to_qflist,
-				["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+				["<esc>"] = actions.close,
+				["<C-l>"] = actions.smart_send_to_loclist,
+				["<C-q>"] = actions.smart_send_to_qflist,
 			},
 		},
 	},
@@ -54,7 +54,9 @@ vim.keymap.set("n", "<leader>pg", function()
 end)
 
 vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-vim.keymap.set("n", "<leader>q", builtin.quickfix)
+vim.keymap.set("n", "<leader>q", function()
+	vim.cmd("copen")
+end, { desc = "Open quickfix list at bottom" })
 vim.keymap.set("n", "<leader>l", builtin.loclist)
 vim.keymap.set("n", "<leader>t", builtin.builtin)
 vim.keymap.set("n", "<leader>p", builtin.commands)
