@@ -136,9 +136,9 @@ cmp.setup({
 		{ name = "buffer" },
 	}),
 	mapping = cmp.mapping.preset.insert({
-		["<C-y>"] = cmp.mapping.confirm({ select = true }),
+		["<C-n>"] = cmp.mapping.confirm({ select = true }),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
-		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-y>"] = cmp.mapping.complete(),
 	}),
 	snippet = {
 		expand = function(args)
