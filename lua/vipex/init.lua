@@ -40,12 +40,9 @@ require("lazy").setup({
 		},
 		{
 			"williamboman/mason.nvim",
-			cmd = "Mason",
-			build = ":MasonUpdate",
 		},
 		{
 			"williamboman/mason-lspconfig.nvim",
-			event = "VeryLazy",
 		},
 		{
 			"hrsh7th/nvim-cmp",
