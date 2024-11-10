@@ -1,16 +1,10 @@
 return {
-	"ellisonleao/gruvbox.nvim",
+	"https://github.com/Yazeed1s/oh-lucy.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		-- vim.opt.background = "dark"
-		require("gruvbox").setup({
-			transparent_mode = not vim.g.neovide,
-		})
-		vim.cmd.colorscheme("gruvbox")
-
-		-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-		-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-		-- vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+		vim.g.oh_lucy_transparent_background = not vim.g.neovide
+		vim.g.oh_lucy_evening_transparent_background = not vim.g.neovide
+		vim.cmd.colorscheme("oh-lucy-evening")
 	end,
 }

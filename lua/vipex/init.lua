@@ -32,7 +32,6 @@ require("lazy").setup({
 		{ import = "plugins" },
 		{
 			"neovim/nvim-lspconfig",
-			event = { "BufReadPre", "BufNewFile" },
 			dependencies = {
 				"mason.nvim",
 				"mason-lspconfig.nvim",
@@ -46,7 +45,6 @@ require("lazy").setup({
 		},
 		{
 			"hrsh7th/nvim-cmp",
-			event = "InsertEnter",
 			dependencies = {
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-nvim-lsp",
