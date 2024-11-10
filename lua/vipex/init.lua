@@ -30,16 +30,63 @@ vim.g.maplocalleader = ","
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
-		{ "neovim/nvim-lspconfig" },
-		{ "williamboman/mason.nvim" },
-		{ "williamboman/mason-lspconfig.nvim" },
-		{ "hrsh7th/nvim-cmp", event = "InsertEnter" },
-		{ "hrsh7th/cmp-buffer" },
-		{ "VonHeikemen/lsp-zero.nvim", branch = "v4.x" },
-		{ "saadparwaiz1/cmp_luasnip" },
-		{ "L3MON4D3/LuaSnip" },
-		{ "hrsh7th/cmp-nvim-lsp" },
+		{
+			"neovim/nvim-lspconfig",
+			event = { "BufReadPre", "BufNewFile" },
+			dependencies = {
+				"mason.nvim",
+				"mason-lspconfig.nvim",
+			},
+		},
+		{
+			"williamboman/mason.nvim",
+			cmd = "Mason",
+			build = ":MasonUpdate",
+		},
+		{
+			"williamboman/mason-lspconfig.nvim",
+			event = "VeryLazy",
+		},
+		{
+			"hrsh7th/nvim-cmp",
+			event = "InsertEnter",
+			dependencies = {
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-nvim-lsp",
+				"L3MON4D3/LuaSnip",
+				"saadparwaiz1/cmp_luasnip",
+			},
+		},
+		{
+			"VonHeikemen/lsp-zero.nvim",
+			branch = "v4.x",
+			lazy = true,
+			config = function()
+				require("lsp-zero.settings").preset({})
+			end,
+		},
 	},
 	install = {},
+	performance = {
+		cache = {
+			enabled = true,
+		},
+		reset_packpath = true,
+		rtp = {
+			reset = true,
+			disabled_plugins = {
+				"gzip",
+				"matchit",
+				"matchparen",
+				"tarPlugin",
+				"tohtml",
+				"tutor",
+				"zipPlugin",
+			},
+		},
+	},
+	change_detection = {
+		notify = false,
+	},
 	checker = { enabled = false },
 })
