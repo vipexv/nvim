@@ -1,10 +1,14 @@
 return {
-	"https://github.com/Yazeed1s/oh-lucy.nvim",
+	"rose-pine/neovim",
+	name = "rose-pine",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		vim.g.oh_lucy_transparent_background = not vim.g.neovide
-		vim.g.oh_lucy_evening_transparent_background = not vim.g.neovide
-		vim.cmd.colorscheme("oh-lucy-evening")
+		require("rose-pine").setup({
+			styles = {
+				transparency = not vim.g.neovide,
+			},
+		})
+		vim.cmd.colorscheme("rose-pine")
 	end,
 }
