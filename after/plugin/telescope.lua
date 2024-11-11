@@ -53,6 +53,11 @@ vim.keymap.set("n", "<leader>pg", function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 
+vim.keymap.set("n", "<leader>pb", function()
+	local current_file_dir = vim.fn.expand("%:p:h")
+	builtin.grep_string({ search = vim.fn.input("Grep > "), cwd = current_file_dir })
+end)
+
 vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>q", function()
 	vim.cmd("copen")
