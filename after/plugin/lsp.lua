@@ -154,8 +154,6 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp", max_item_count = 10 },
 		{ name = "luasnip", max_item_count = 5 },
-	}, {
-		{ name = "buffer", max_item_count = 5 },
 	}),
 	mapping = cmp.mapping.preset.insert({
 		["<C-n>"] = cmp.mapping.confirm({ select = true }),

@@ -34,7 +34,7 @@ function TriggerEvent(eventName, ...) end
 ---Triggers an event for the given playerId, sending additional parameters as arguments.
 ---[Documentation](https://docs.fivem.net/docs/scripting-manual/working-with-events/triggering-events/)
 ---@param eventName string
----@param playerId number
+---@param playerId number|string
 function TriggerClientEvent(eventName, playerId, ...) end
 
 ---@param eventName string
