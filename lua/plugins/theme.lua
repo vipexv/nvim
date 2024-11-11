@@ -6,7 +6,7 @@ return {
 	config = function()
 		require("rose-pine").setup({
 			styles = {
-				transparency = not vim.g.neovide,
+				transparency = true,
 			},
 		})
 		vim.cmd.colorscheme("rose-pine")

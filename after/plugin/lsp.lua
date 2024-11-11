@@ -152,19 +152,31 @@ local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
+		{ name = "nvim_lsp", max_item_count = 10 },
+		{ name = "luasnip", max_item_count = 5 },
 	}, {
-		{ name = "buffer" },
+		{ name = "buffer", max_item_count = 5 },
 	}),
 	mapping = cmp.mapping.preset.insert({
 		["<C-n>"] = cmp.mapping.confirm({ select = true }),
 		["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<C-y>"] = cmp.mapping.complete(),
 	}),
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
 		end,
+	},
+	experimental = {
+		ghost_text = true,
+	},
+	completion = {
+		keyword_length = 1,
+		completeopt = "menu,menuone,noinsert",
+		max_item_count = 10,
 	},
 })
