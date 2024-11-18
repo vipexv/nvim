@@ -4,7 +4,7 @@ local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
-		file_ignore_patterns = { "node_modules", "dist" },
+		file_ignore_patterns = { "node_modules", "build", "dist" },
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
