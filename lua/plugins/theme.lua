@@ -1,11 +1,15 @@
 return {
-	"ribru17/bamboo.nvim",
+	"ramojus/mellifluous.nvim",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require("bamboo").setup({
-			transparent = not vim.g.neovide,
+		require("mellifluous").setup({})
+		vim.cmd.colorscheme("mellifluous")
+
+		vim.api.nvim_create_autocmd("VimEnter", {
+			callback = function()
+				vim.cmd("Mellifluous toggle_transparency")
+			end,
 		})
-		require("bamboo").load()
 	end,
 }
