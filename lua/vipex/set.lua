@@ -33,7 +33,6 @@ vim.opt.scrolloff = 999
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
-vim.opt.colorcolumn = "80"
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
