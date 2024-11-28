@@ -1,11 +1,16 @@
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
+vim.opt.swapfile = false
+vim.opt.backup = false
 vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.backup = false
 vim.opt.writebackup = false
+
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
@@ -28,6 +33,7 @@ vim.opt.scrolloff = 999
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
+vim.opt.colorcolumn = "80"
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
