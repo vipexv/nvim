@@ -1,15 +1,14 @@
 return {
-	"ramojus/mellifluous.nvim",
+	"rose-pine/neovim",
+	name = "rose-pine",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require("mellifluous").setup({})
-		vim.cmd.colorscheme("mellifluous")
-
-		vim.api.nvim_create_autocmd("VimEnter", {
-			callback = function()
-				vim.cmd("Mellifluous toggle_transparency")
-			end,
+		require("rose-pine").setup({
+			styles = {
+				transparency = true,
+			},
 		})
+		vim.cmd.colorscheme("rose-pine")
 	end,
 }
