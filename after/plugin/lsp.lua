@@ -128,6 +128,7 @@ require("mason-lspconfig").setup({
 								weakUnionCheck = true,
 								weakNilCheck = true,
 							},
+							checkThirdParty = false,
 							maxPreload = 100000,
 							preloadfilesize = 10000,
 						},
@@ -170,11 +171,11 @@ cmp.setup({
 		end,
 	},
 	experimental = {
-		ghost_text = true,
+		ghost_text = false,
 	},
 	completion = {
-		keyword_length = 1,
+		keyword_length = 2,
 		completeopt = "menu,menuone,noinsert",
-		max_item_count = 10,
+		max_item_count = 5,
 	},
 })
