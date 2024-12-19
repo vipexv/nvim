@@ -39,7 +39,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.signcolumn = "yes"
 
-vim.opt.updatetime = 50
+-- vim.opt.updatetime = 50
 
 vim.opt.laststatus = 0
 
@@ -49,16 +49,6 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup("HighlightYank", {})
 local vipexGroup = augroup("vipex", {})
-autocmd("TextYankPost", {
-	group = yank_group,
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 40,
-		})
-	end,
-})
 
 autocmd({ "BufWritePre" }, {
 	group = vipexGroup,
