@@ -4,9 +4,10 @@ require("conform").setup({
 		python = { "isort", "black" },
 		javascript = { "prettierd" },
 		typescript = { "prettierd" },
-		typescriptreact = { "prettierd" }, -- Add this line
+		typescriptreact = { "prettierd" },
 		svelte = { "prettierd" },
 		json = { "prettierd" },
 		css = { "prettierd" },
+		vue = { "prettierd" },
 	},
 })

@@ -52,14 +52,6 @@ require("lazy").setup({
 				"saadparwaiz1/cmp_luasnip",
 			},
 		},
-		{
-			"VonHeikemen/lsp-zero.nvim",
-			branch = "v4.x",
-			lazy = true,
-			config = function()
-				require("lsp-zero.settings").preset({})
-			end,
-		},
 	},
 	install = {},
 	performance = {

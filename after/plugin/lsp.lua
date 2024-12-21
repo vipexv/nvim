@@ -42,9 +42,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "[d", function()
 			vim.diagnostic.goto_next()
 		end, opts)
+
 		vim.keymap.set("n", "]d", function()
 			vim.diagnostic.goto_prev()
 		end, opts)
+
 		vim.keymap.set("n", "<leader>vca", function()
 			vim.lsp.buf.code_action()
 		end, opts)
@@ -174,7 +176,7 @@ cmp.setup({
 		ghost_text = false,
 	},
 	completion = {
-		keyword_length = 2,
+		keyword_length = 1,
 		completeopt = "menu,menuone,noinsert",
 		max_item_count = 5,
 	},
