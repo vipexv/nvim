@@ -120,12 +120,12 @@ require("mason-lspconfig").setup({
 								"`",
 							},
 						},
+
 						diagnostics = {
 							globals = { "Citizen", "mysql", "vim", "vector3", "vector2", "vec3", "fx_version", "lib" },
 						},
 						workspace = {
 							library = library_paths,
-
 							type = {
 								weakUnionCheck = true,
 								weakNilCheck = true,

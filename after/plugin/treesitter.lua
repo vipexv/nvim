@@ -11,15 +11,19 @@ require("nvim-treesitter.configs").setup({
 			if lang == "rust" then
 				return false
 			end
+
 			if lang == "cpp" then
 				return false
 			end
+
 			local max_filesize = 100 * 1024 -- 100 KB
 			local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+
 			if ok and stats and stats.size > max_filesize then
 				return true
 			end
 		end,
+
 		additional_vim_regex_highlighting = false,
 	},
 
@@ -27,18 +31,18 @@ require("nvim-treesitter.configs").setup({
 		select = {
 			enable = true,
 			lookahead = true,
-			-- keymaps = {
-			-- 	["aa"] = "@parameter.outer",
-			-- 	["ia"] = "@parameter.inner",
-			-- 	["af"] = "@function.outer",
-			-- 	["if"] = "@function.inner",
-			-- 	["ac"] = "@class.outer",
-			-- 	["ic"] = "@class.inner",
-			-- },
+			keymaps = {
+				["aa"] = "@parameter.outer",
+				["ia"] = "@parameter.inner",
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+			},
 		},
 		move = {
 			enable = true,
-			set_jumps = true, -- whether to set jumps in the jumplist
+			set_jumps = true,
 			goto_next_start = {
 				["]m"] = "@function.outer",
 				["]]"] = "@class.outer",
