@@ -1,14 +1,10 @@
 return {
-	"rose-pine/neovim",
-	name = "rose-pine",
+	"sainnhe/sonokai",
 	lazy = false,
 	priority = 1000,
-	config = function()
-		require("rose-pine").setup({
-			styles = {
-				transparency = true,
-			},
-		})
-		vim.cmd.colorscheme("rose-pine")
+	config = function(_, opts)
+		vim.g.sonokai_style = "espresso" -- "default, atlantis, andromeda, shusia, maia, espresso"
+		vim.g.sonokai_transparent_background = 2
+		vim.cmd("colorscheme sonokai")
 	end,
 }
