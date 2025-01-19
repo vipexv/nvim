@@ -1,10 +1,11 @@
 return {
-	"sainnhe/sonokai",
-	lazy = false,
+	"wtfox/jellybeans.nvim",
 	priority = 1000,
-	config = function(_, opts)
-		vim.g.sonokai_style = "espresso" -- "default, atlantis, andromeda, shusia, maia, espresso"
-		vim.g.sonokai_transparent_background = 2
-		vim.cmd("colorscheme sonokai")
+	lazy = false,
+	config = function()
+		require("jellybeans").setup({
+			transparent = true,
+		})
+		vim.cmd.colorscheme("jellybeans")
 	end,
 }
