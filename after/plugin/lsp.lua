@@ -112,16 +112,20 @@ require("mason-lspconfig").setup({
 							enable = true,
 						},
 						runtime = {
+							pathStrict = true,
 							version = "Lua 5.4",
 							nonstandardSymbol = {
+								"/**/",
+								"`",
 								"+=",
 								"-=",
 								"*=",
 								"/=",
+								"<<=",
+								">>=",
 								"&=",
 								"|=",
 								"^=",
-								"`",
 							},
 						},
 
@@ -140,12 +144,15 @@ require("mason-lspconfig").setup({
 								".vs",
 								"*-build",
 								"node_modules",
+								"web",
+								".git",
+								".github",
 								"dist",
 								"build",
 							},
 							checkThirdParty = false,
-							maxPreload = 100000,
-							preloadfilesize = 10000,
+							maxPreload = 10000,
+							preloadfilesize = 1000,
 						},
 						telemetry = { enable = false },
 					},
@@ -167,6 +174,12 @@ local cmp = require("cmp")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
+	performance = {
+		max_view_entries = 64,
+		trigger_debounce_time = 500,
+		debounce = 150,
+		throttle = 60,
+	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp", max_item_count = 5 },
 		{ name = "luasnip", max_item_count = 5 },

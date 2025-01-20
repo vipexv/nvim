@@ -1,5 +1,7 @@
 vim.opt.guicursor = ""
 
+vim.opt.loadplugins = true
+vim.opt.lazyredraw = true
 vim.opt.nu = true
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -30,7 +32,8 @@ vim.opt.wrap = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.hlsearch = true
 vim.opt.scrolloff = 999
-vim.opt.incsearch = true
+
+vim.g.snacks_animate = false
 
 vim.opt.termguicolors = true
 
@@ -39,19 +42,8 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.signcolumn = "yes"
 
--- vim.opt.updatetime = 50
+-- vim.opt.updatetime = 250
 
 vim.opt.laststatus = 0
 
 vim.opt.showtabline = 2
-
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup("HighlightYank", {})
-local vipexGroup = augroup("vipex", {})
-
-autocmd({ "BufWritePre" }, {
-	group = vipexGroup,
-	pattern = "*",
-	command = [[%s/\s\+$//e]],
-})

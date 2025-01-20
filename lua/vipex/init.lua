@@ -1,12 +1,10 @@
 require("vipex.remap")
 require("vipex.set")
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
-})
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -30,7 +28,11 @@ vim.g.maplocalleader = ","
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
-		{ "neovim/nvim-lspconfig", dependencies = { "mason.nvim", "mason-lspconfig.nvim" } },
+		{
+			"neovim/nvim-lspconfig",
+			event = { "BufReadPre", "BufNewFile" },
+			dependencies = { "mason.nvim", "mason-lspconfig.nvim" },
+		},
 		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
 		{
@@ -60,6 +62,8 @@ require("lazy").setup({
 			enabled = true,
 		},
 		reset_packpath = true,
+		reset_event = "VeryLazy",
+		preload_modules = { "vim.treesitter", "vim.lsp" },
 		rtp = {
 			reset = true,
 			disabled_plugins = {
@@ -75,4 +79,21 @@ require("lazy").setup({
 		notify = false,
 	},
 	checker = { enabled = false },
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "LazyVimStarted",
+	callback = function()
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*",
+			callback = function(args)
+				require("conform").format({ bufnr = args.buf })
+			end,
+		})
+
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*",
+			command = [[%s/\s\+$//e]],
+		})
+	end,
 })
