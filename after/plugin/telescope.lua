@@ -4,7 +4,7 @@ local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
-		file_ignore_patterns = { "node_modules", "build", "dist" },
+		file_ignore_patterns = { "node_modules", "build", "dist", "yarn.lock" },
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
@@ -66,4 +66,4 @@ end, { desc = "Open quickfix list at bottom" })
 vim.keymap.set("n", "<leader>l", builtin.loclist)
 vim.keymap.set("n", "<leader>t", builtin.builtin)
 vim.keymap.set("n", "<leader>p", builtin.commands)
-vim.keymap.set("v", "<leader>f", builtin.grep_string)
+vim.keymap.set("v", "<leader>e", builtin.grep_string)

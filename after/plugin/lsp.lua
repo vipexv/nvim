@@ -92,6 +92,7 @@ require("mason-lspconfig").setup({
 		end,
 		lua_ls = function()
 			local fivem_dirs = vim.fn.glob(vim.fn.stdpath("config") .. "/fivem-library/*", 0, 1)
+
 			local library_paths = {
 				[vim.env.VIMRUNTIME] = true,
 			}
@@ -102,13 +103,16 @@ require("mason-lspconfig").setup({
 
 			require("lspconfig").lua_ls.setup({
 				capabilities = lsp_capabilities,
+				root_dir = function()
+					return vim.fn.getcwd()
+				end,
 				settings = {
 					Lua = {
 						hint = {
 							enable = true,
 						},
 						runtime = {
-							version = "lua 5.4",
+							version = "Lua 5.4",
 							nonstandardSymbol = {
 								"+=",
 								"-=",
@@ -124,11 +128,18 @@ require("mason-lspconfig").setup({
 						diagnostics = {
 							globals = { "Citizen", "mysql", "vim", "vector3", "vector2", "vec3", "fx_version", "lib" },
 						},
+
 						workspace = {
 							library = library_paths,
 							type = {
 								weakUnionCheck = true,
 								weakNilCheck = true,
+							},
+							ignoreDir = {
+								".vscode",
+								".vs",
+								"*-build",
+								"node_modules",
 							},
 							checkThirdParty = false,
 							maxPreload = 100000,
