@@ -20,6 +20,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		os.exit(1)
 	end
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
@@ -42,7 +43,11 @@ require("lazy").setup({
 			dependencies = {
 				{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
 				{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
-				{ "L3MON4D3/LuaSnip", event = "InsertEnter" },
+				{
+					"L3MON4D3/LuaSnip",
+					version = "v2.*",
+					build = (not jit.os:find("Windows")) and "make install_jsregexp" or nil,
+				},
 				{ "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
 			},
 		},
@@ -72,6 +77,12 @@ require("lazy").setup({
 				"tohtml",
 				"tutor",
 				"zipPlugin",
+				"matchparen",
+				"spellfile_plugin",
+				"syntax",
+				"remote_plugins",
+				"health",
+				"logiPat",
 			},
 		},
 	},
