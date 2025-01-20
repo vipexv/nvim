@@ -140,6 +140,8 @@ require("mason-lspconfig").setup({
 								".vs",
 								"*-build",
 								"node_modules",
+								"dist",
+								"build",
 							},
 							checkThirdParty = false,
 							maxPreload = 100000,
