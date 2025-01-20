@@ -41,7 +41,7 @@ require("lazy").setup({
 			lazy = false,
 			event = { "InsertEnter" },
 			dependencies = {
-				{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
+				-- { "hrsh7th/cmp-buffer", event = "InsertEnter" },
 				{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
 				{
 					"L3MON4D3/LuaSnip",
