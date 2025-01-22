@@ -1,4 +1,4 @@
-vim.loader.enable()
+vim.loader.enable(true)
 require("vipex")
 
 if vim.g.neovide then
