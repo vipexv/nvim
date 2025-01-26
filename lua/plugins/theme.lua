@@ -1,11 +1,14 @@
 return {
-	"wtfox/jellybeans.nvim",
+	"rose-pine/neovim",
 	priority = 1000,
 	lazy = false,
 	config = function()
-		require("jellybeans").setup({
-			transparent = true,
+		require("rose-pine").setup({
+			dark_variant = "moon",
+			styles = {
+				transparency = not vim.g.neovide,
+			},
 		})
-		vim.cmd.colorscheme("jellybeans")
+		vim.cmd.colorscheme("rose-pine")
 	end,
 }
