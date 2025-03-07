@@ -1,14 +1,13 @@
 return {
-	"rose-pine/neovim",
+	"catppuccin/nvim",
 	priority = 1000,
 	lazy = false,
 	config = function()
-		require("rose-pine").setup({
-			dark_variant = "moon",
-			styles = {
-				transparency = not vim.g.neovide,
-			},
+		require("catppuccin").setup({
+			flavour = "Mocha",
+			transparent_background = true,
+			term_colors = true,
 		})
-		vim.cmd.colorscheme("rose-pine")
+		vim.cmd.colorscheme("catppuccin")
 	end,
 }

@@ -12,6 +12,17 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
+vim.keymap.set("n", "<leader>bc", function()
+	local current_buf = vim.api.nvim_get_current_buf()
+	local buffer_list = vim.api.nvim_list_bufs()
+
+	for i = 1, #buffer_list do
+		local buf = buffer_list[i]
+		if buf ~= current_buf and vim.api.nvim_buf_is_loaded(buf) then
+			vim.api.nvim_buf_delete(buf, { force = true })
+		end
+	end
+end, { desc = "Close all buffers except the active one" })
 
 vim.keymap.set("n", "<leader>od", function()
 	local path = vim.fn.expand("%:p:h")
