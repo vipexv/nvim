@@ -14,13 +14,21 @@ if vim.g.neovide then
 	vim.g.neovide_fullscreen = true
 end
 
-vim.cmd.colorscheme("torte")
+vim.cmd([[
+  augroup TransparentEOF
+    autocmd!
+    autocmd ColorScheme * highlight EndOfBuffer guibg=none ctermbg=none
+    autocmd ColorScheme * highlight VertSplit guibg=none ctermbg=none
+  augroup END
+]])
+
+vim.cmd.colorscheme("default")
 vim.cmd("highlight Normal ctermbg=none guibg=none")
 vim.cmd("highlight NonText ctermbg=none guibg=none")
 vim.cmd("highlight LineNr ctermbg=none guibg=none")
 vim.cmd("highlight SignColumn ctermbg=none guibg=none")
-vim.cmd("highlight StatusLine ctermbg=none guibg=none")
-vim.cmd("highlight StatusLineNC ctermbg=none guibg=none")
+-- vim.cmd("highlight StatusLine ctermbg=none guibg=none")
+-- vim.cmd("highlight StatusLineNC ctermbg=none guibg=none")
 vim.cmd("highlight CursorLine ctermbg=none guibg=none")
 vim.cmd("highlight Pmenu guibg=none")
 vim.cmd("highlight FloatBorder guibg=none guifg=none")
