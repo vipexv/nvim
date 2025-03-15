@@ -187,7 +187,7 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp", max_item_count = 5 },
-		{ name = "luasnip", max_item_count = 5 },
+		-- { name = "luasnip", max_item_count = 5 },
 	}),
 	mapping = cmp.mapping.preset.insert({
 		["<C-n>"] = cmp.mapping.confirm({ select = true }),
@@ -198,11 +198,11 @@ cmp.setup({
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
-	snippet = {
-		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
-		end,
-	},
+	-- snippet = {
+	-- 	expand = function(args)
+	-- 		require("luasnip").lsp_expand(args.body)
+	-- 	end,
+	-- },
 	experimental = {
 		ghost_text = false,
 	},
