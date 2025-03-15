@@ -1,13 +1,10 @@
 return {
-	"catppuccin/nvim",
+	"sainnhe/gruvbox-material",
 	priority = 1000,
 	lazy = false,
 	config = function()
-		require("catppuccin").setup({
-			flavour = "Mocha",
-			transparent_background = true,
-			term_colors = true,
-		})
-		vim.cmd.colorscheme("catppuccin")
+		vim.g.gruvbox_material_transparent_background = 2
+		vim.g.gruvbox_material_foreground = "mix"
+		vim.cmd.colorscheme("gruvbox-material")
 	end,
 }
