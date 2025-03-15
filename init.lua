@@ -7,6 +7,9 @@ vim.g.loaded_node_provider = 0
 
 require("vipex")
 
+vim.g.vim_svelte_plugin_load_full_syntax = 1
+vim.g.vim_svelte_plugin_use_typescript = 1
+
 if vim.g.neovide then
 	vim.o.guifont = "Iosevka Nerd Font:h15"
 	vim.g.neovide_hide_mouse_when_typing = false
@@ -22,7 +25,16 @@ vim.cmd([[
   augroup END
 ]])
 
-vim.cmd.colorscheme("default")
+vim.cmd([[
+  augroup TransparentTabline
+    autocmd!
+    autocmd ColorScheme * highlight TabLine     guibg=none ctermbg=none
+    autocmd ColorScheme * highlight TabLineSel  guibg=none ctermbg=none
+    autocmd ColorScheme * highlight TabLineFill guibg=none ctermbg=none
+  augroup END
+]])
+
+vim.cmd.colorscheme("desert")
 vim.cmd("highlight Normal ctermbg=none guibg=none")
 vim.cmd("highlight NonText ctermbg=none guibg=none")
 vim.cmd("highlight LineNr ctermbg=none guibg=none")
