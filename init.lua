@@ -13,3 +13,11 @@ if vim.g.neovide then
 	vim.g.neovide_confirm_quit = false
 	vim.g.neovide_fullscreen = true
 end
+
+vim.cmd.colorscheme("torte")
+vim.cmd("highlight Normal ctermbg=none guibg=none")
+vim.cmd("highlight NonText ctermbg=none guibg=none")
+vim.cmd("highlight LineNr ctermbg=none guibg=none")
+vim.cmd("highlight SignColumn ctermbg=none guibg=none")
+vim.cmd("highlight StatusLine ctermbg=none guibg=none")
+vim.cmd("highlight StatusLineNC ctermbg=none guibg=none")
