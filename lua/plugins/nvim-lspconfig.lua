@@ -10,7 +10,7 @@ return {
 			build = ":COQdeps",
 			init = function()
 				vim.g.coq_settings = {
-					auto_start = true,
+					auto_start = "shut-up",
 					keymap = {
 						jump_to_mark = "<c-j>",
 					},

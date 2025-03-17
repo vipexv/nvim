@@ -1,10 +1,13 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
+local sorters = require("telescope.sorters")
 
 telescope.setup({
 	defaults = {
 		file_ignore_patterns = { "node_modules", "*-build", "dist", "yarn.lock" },
+		file_sorter = sorters.get_fzy_sorter,
+		generic_sorter = sorters.get_fzy_sorter,
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
