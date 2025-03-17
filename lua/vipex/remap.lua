@@ -3,11 +3,11 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 -- General Keybindings
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- Open netrw
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 vim.keymap.set("n", "<leader>bD", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format) -- LSP formatting
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>cq", ":call setqflist([])<CR>", { noremap = true, silent = true }) -- Clear quickfix list
 
 -- Searching and Navigation
@@ -35,7 +35,7 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- Yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]) -- Delete without modifying clipboard
 
 -- Code Actions
-vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action) -- LSP code actions
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
 -- Miscellaneous
 vim.keymap.set("n", "Q", "<nop>") -- Disable macro recording
@@ -66,7 +66,6 @@ vim.keymap.set("n", "<leader>bc", function()
 	end
 end, { desc = "Close all buffers except the active one" })
 
--- Open Windows File Explorer in current directory
 vim.keymap.set("n", "<leader>od", function()
 	local path = vim.fn.expand("%:p:h")
 	vim.cmd(string.format('silent !start "" "%s"', path))
