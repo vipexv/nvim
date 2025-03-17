@@ -13,18 +13,18 @@ vim.g.vim_svelte_plugin_load_full_syntax = 1
 vim.g.vim_svelte_plugin_use_typescript = 1
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "svelte",
-	callback = function()
-		vim.bo.commentstring = "// %s"
-	end,
+  pattern = "svelte",
+  callback = function()
+    vim.bo.commentstring = "// %s"
+  end,
 })
 
 -- Neovide
 if vim.g.neovide then
-	vim.o.guifont = "Iosevka Nerd Font:h15"
-	vim.g.neovide_hide_mouse_when_typing = false
-	vim.g.neovide_confirm_quit = false
-	vim.g.neovide_fullscreen = true
+  vim.o.guifont = "Iosevka Nerd Font:h15"
+  vim.g.neovide_hide_mouse_when_typing = false
+  vim.g.neovide_confirm_quit = false
+  vim.g.neovide_fullscreen = true
 end
 
 -- Theme

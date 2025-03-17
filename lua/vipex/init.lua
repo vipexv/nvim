@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd("User", {
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			pattern = "*",
 			callback = function(args)
-				require("conform").format({ bufnr = args.buf })
+				vim.lsp.buf.format({ async = false })
 				vim.schedule(function()
 					local view = vim.fn.winsaveview()
 					vim.cmd([[keeppatterns %s/\s\+$//e]])
