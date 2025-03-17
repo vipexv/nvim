@@ -4,7 +4,7 @@ local actions = require("telescope.actions")
 
 telescope.setup({
 	defaults = {
-		file_ignore_patterns = { "node_modules", "build", "dist", "yarn.lock" },
+		file_ignore_patterns = { "node_modules", "*-build", "dist", "yarn.lock" },
 		mappings = {
 			i = {
 				["<esc>"] = actions.close,
@@ -25,11 +25,10 @@ telescope.setup({
 
 telescope.load_extension("fzf")
 
--- vim.keymap.set("n", "<F1>", builtin.help_tags)
 vim.keymap.set("n", "<leader>pf", builtin.find_files)
-
 vim.keymap.set("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+
 vim.keymap.set("n", "<leader>fib", function()
 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 		winblend = 10,
@@ -60,10 +59,15 @@ vim.keymap.set("n", "<leader>pb", function()
 end)
 
 vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
+
 vim.keymap.set("n", "<leader>q", function()
 	vim.cmd("copen")
 end, { desc = "Open quickfix list at bottom" })
+
 vim.keymap.set("n", "<leader>l", builtin.loclist)
+
 vim.keymap.set("n", "<leader>t", builtin.builtin)
+
 vim.keymap.set("n", "<leader>p", builtin.commands)
+
 vim.keymap.set("v", "<leader>e", builtin.grep_string)

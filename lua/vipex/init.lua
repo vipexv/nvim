@@ -1,16 +1,14 @@
 require("vipex.remap")
 require("vipex.set")
 
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_node_provider = 0
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local uv = vim.uv or vim.loop
 
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
+if not uv.fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	local clone_cmd = { "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath }
+	local out = vim.fn.system(clone_cmd)
+
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
@@ -24,24 +22,16 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
-		{ "williamboman/mason.nvim" },
-		{ "williamboman/mason-lspconfig.nvim" },
 	},
-
 	defaults = {
 		lazy = true,
 		version = false,
 	},
 	performance = {
-		cache = {
-			enabled = true,
-		},
+		cache = { enabled = true },
 		reset_packpath = true,
 		reset_event = "VeryLazy",
 		preload_modules = { "vim.treesitter", "vim.lsp" },
@@ -62,9 +52,7 @@ require("lazy").setup({
 			},
 		},
 	},
-	change_detection = {
-		notify = false,
-	},
+	change_detection = { notify = false },
 	checker = { enabled = false },
 })
 
@@ -75,12 +63,12 @@ vim.api.nvim_create_autocmd("User", {
 			pattern = "*",
 			callback = function(args)
 				require("conform").format({ bufnr = args.buf })
+				vim.schedule(function()
+					local view = vim.fn.winsaveview()
+					vim.cmd([[keeppatterns %s/\s\+$//e]])
+					vim.fn.winrestview(view)
+				end)
 			end,
-		})
-
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			pattern = "*",
-			command = [[%s/\s\+$//e]],
 		})
 	end,
 })

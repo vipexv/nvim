@@ -1,9 +1,6 @@
-local telescopeBuiltIn = require("telescope.builtin")
-
--- COQ.nvim Setup
+local telescope_builtin = require("telescope.builtin")
 local coq = require("coq")
 
--- LSP Handlers
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	focusable = false,
 	border = "rounded",
@@ -29,37 +26,49 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
 	callback = function(event)
-		local opts = { buffer = event.buf }
+		local buffer_opts = { buffer = event.buf }
 
-		vim.keymap.set("n", "gd", telescopeBuiltIn.lsp_definitions, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-		vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-		vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-		vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-		vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "<leader>fr", telescopeBuiltIn.lsp_references, opts)
-		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set("n", "<leader>ve", vim.diagnostic.setloclist, opts)
+		-- Navigation & Documentation
+		vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions, buffer_opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, buffer_opts)
+		vim.keymap.set("n", "<leader>fr", telescope_builtin.lsp_references, buffer_opts)
+
+		-- Diagnostics
+		vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, buffer_opts)
+		vim.keymap.set("n", "[d", vim.diagnostic.goto_next, buffer_opts)
+		vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, buffer_opts)
+		vim.keymap.set("n", "<leader>ve", vim.diagnostic.setloclist, buffer_opts)
+
+		-- Code Actions
+		vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, buffer_opts)
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, buffer_opts)
+		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, buffer_opts)
+
+		-- Workspace Symbols
+		vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, buffer_opts)
 	end,
 })
 
--- Mason Setup
 require("mason").setup({})
+
 require("mason-lspconfig").setup({
-	ensure_installed = { "ts_ls", "svelte", "lua_ls", "tailwindcss", "jsonls", "cssls" },
+	ensure_installed = {
+		"ts_ls",
+		"svelte",
+		"lua_ls",
+		"tailwindcss",
+		"jsonls",
+		"cssls",
+	},
 	handlers = {
 		function(server_name)
 			require("lspconfig")[server_name].setup(coq.lsp_ensure_capabilities({}))
 		end,
+
 		lua_ls = function()
 			local fivem_dirs = vim.fn.glob(vim.fn.stdpath("config") .. "/fivem-library/*", 0, 1)
 
-			local library_paths = {
-				[vim.env.VIMRUNTIME] = true,
-			}
-
+			local library_paths = { [vim.env.VIMRUNTIME] = true }
 			for _, dir in ipairs(fivem_dirs) do
 				library_paths[dir] = true
 			end
@@ -89,14 +98,20 @@ require("mason-lspconfig").setup({
 							},
 						},
 						diagnostics = {
-							globals = { "Citizen", "mysql", "vim", "vector3", "vector2", "vec3", "fx_version", "lib" },
+							globals = {
+								"Citizen",
+								"mysql",
+								"vim",
+								"vector3",
+								"vector2",
+								"vec3",
+								"fx_version",
+								"lib",
+							},
 						},
 						workspace = {
 							library = library_paths,
-							type = {
-								weakUnionCheck = true,
-								weakNilCheck = true,
-							},
+							type = { weakUnionCheck = true, weakNilCheck = true },
 							ignoreDir = {
 								".vscode",
 								".vs",
@@ -117,6 +132,7 @@ require("mason-lspconfig").setup({
 				},
 			}))
 		end,
+
 		svelte = function()
 			require("lspconfig").svelte.setup(coq.lsp_ensure_capabilities({
 				root_dir = function()
