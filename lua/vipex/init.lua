@@ -14,7 +14,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	if vim.v.shell_error ~= 0 then
 		vim.api.nvim_echo({
 			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
+			{ out, "WarningMsg" },
 			{ "\nPress any key to exit..." },
 		}, true, {})
 		vim.fn.getchar()
@@ -30,28 +30,8 @@ vim.g.maplocalleader = ","
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
-		{
-			"neovim/nvim-lspconfig",
-			event = { "BufReadPre", "BufNewFile" },
-			dependencies = { "mason.nvim", "mason-lspconfig.nvim" },
-		},
 		{ "williamboman/mason.nvim" },
 		{ "williamboman/mason-lspconfig.nvim" },
-		{
-			"hrsh7th/nvim-cmp",
-			lazy = false,
-			event = { "InsertEnter" },
-			dependencies = {
-				{ "hrsh7th/cmp-nvim-lsp", event = "InsertEnter" },
-				-- { "hrsh7th/cmp-buffer", event = "InsertEnter" },
-				-- {
-				-- 	"L3MON4D3/LuaSnip",
-				-- 	version = "v2.*",
-				-- 	build = (not jit.os:find("Windows")) and "make install_jsregexp" or nil,
-				-- },
-				-- { "saadparwaiz1/cmp_luasnip", event = "InsertEnter" },
-			},
-		},
 	},
 
 	defaults = {
