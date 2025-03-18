@@ -1,3 +1,3 @@
 return {
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	{ "ibhagwan/fzf-lua", lazy = true }
 }

@@ -1,4 +1,4 @@
-local telescope_builtin = require("telescope.builtin")
+local fzf_lua = require("fzf-lua")
 local coq = require("coq")
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
@@ -28,23 +28,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(event)
 		local buffer_opts = { buffer = event.buf }
 
-		-- Navigation & Documentation
-		vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions, buffer_opts)
+		vim.keymap.set("n", "gd", fzf_lua.lsp_definitions, buffer_opts)
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, buffer_opts)
-		vim.keymap.set("n", "<leader>fr", telescope_builtin.lsp_references, buffer_opts)
+		vim.keymap.set("n", "<leader>fr", fzf_lua.lsp_references, buffer_opts)
 
-		-- Diagnostics
 		vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, buffer_opts)
 		vim.keymap.set("n", "[d", vim.diagnostic.goto_next, buffer_opts)
 		vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, buffer_opts)
 		vim.keymap.set("n", "<leader>ve", vim.diagnostic.setloclist, buffer_opts)
 
-		-- Code Actions
 		vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, buffer_opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, buffer_opts)
 		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, buffer_opts)
 
-		-- Workspace Symbols
 		vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, buffer_opts)
 	end,
 })
