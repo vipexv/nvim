@@ -15,6 +15,8 @@ fzf.setup({
     multiprocess = true,
     hidden = true,
     preview = false,
+    file_icons = false,
+    git_icons = false,
     file_ignore_patterns = { "node_modules", "*.lock", "dist", "yarn.lock", ".git" },
   },
   grep = {
