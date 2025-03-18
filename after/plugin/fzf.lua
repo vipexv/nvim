@@ -2,14 +2,12 @@ local fzf = require("fzf-lua")
 
 fzf.setup({
   winopts = {
-    height = 0.5,
-    width = 0.5,
+    height = 1,
+    width = 1,
     preview = {
-      default = "type",
-      border  = "border",
+      default = "builtin",
       hidden  = "nohidden",
-      layout  = "none",
-      wrap    = "nowrap",
+      layout  = "horizontal",
     },
   },
   files = {
@@ -23,6 +21,7 @@ fzf.setup({
     prompt = "Grep❯ ",
     input_prompt = "Grep > ",
     rg_opts = "--hidden --column --line-number --no-heading",
+    preview = "builtin",
   },
   buffers = { prompt = "Buffers❯ " },
   oldfiles = { prompt = "History❯ " },
