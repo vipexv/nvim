@@ -2,8 +2,6 @@ local fzf = require("fzf-lua")
 
 fzf.setup({
   winopts = {
-    height = 1,
-    width = 1,
     preview = {
       default = "builtin",
       hidden  = "nohidden",
