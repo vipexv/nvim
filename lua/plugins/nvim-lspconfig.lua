@@ -8,14 +8,18 @@ return {
 			"ms-jpq/coq_nvim",
 			branch = "coq",
 			build = ":COQdeps",
-			init = function()
-				vim.g.coq_settings = {
-					auto_start = "shut-up",
-					keymap = {
-						jump_to_mark = "<c-j>",
-					},
-				}
-			end,
 		},
 	},
+	init = function()
+		vim.g.coq_settings = {
+			auto_start = "shut-up",
+			keymap = {
+				jump_to_mark = "<c-j>",
+			},
+			clients = {
+				buffers = { enabled = false },
+				tree_sitter = { enabled = false },
+			},
+		}
+	end,
 }
