@@ -18,7 +18,9 @@ return {
 			},
 			clients = {
 				buffers = { enabled = false },
+				registers = { enabled = false },
 				tree_sitter = { enabled = false },
+				third_party = { enabled = false }
 			},
 		}
 	end,

@@ -56,19 +56,21 @@ require("lazy").setup({
 	checker = { enabled = false },
 })
 
-vim.api.nvim_create_autocmd("User", {
-	pattern = "LazyVimStarted",
-	callback = function()
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			pattern = "*",
-			callback = function(args)
-				vim.lsp.buf.format({ async = false })
-				vim.schedule(function()
-					local view = vim.fn.winsaveview()
-					vim.cmd([[keeppatterns %s/\s\+$//e]])
-					vim.fn.winrestview(view)
-				end)
-			end,
-		})
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	callback = function(args)
+		local clients = vim.lsp.get_active_clients({ bufnr = args.buf })
+
+		for i = 1, #clients do
+			local client = clients[i]
+			if client.supports_method("textDocument/formatting") then
+				vim.lsp.buf.format({
+					async = false,
+					filter = function(c) return c.id == client.id end,
+					timeout_ms = 2000
+				})
+				break
+			end
+		end
 	end,
 })

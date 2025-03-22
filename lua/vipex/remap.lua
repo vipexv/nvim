@@ -11,11 +11,11 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>cq", ":call setqflist([])<CR>", { noremap = true, silent = true }) -- Clear quickfix list
 
 -- Searching and Navigation
-vim.keymap.set("n", "n", "nzzzv") -- Search next and center
-vim.keymap.set("n", "N", "Nzzzv") -- Search previous and center
+vim.keymap.set("n", "n", "nzzzv")                           -- Search next and center
+vim.keymap.set("n", "N", "Nzzzv")                           -- Search previous and center
 vim.keymap.set("n", "<Esc>", ":noh<CR>", { silent = true }) -- Clear highlights
-vim.keymap.set("n", "<C-d>", "<C-d>zz") -- Scroll down and center
-vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Scroll up and center
+vim.keymap.set("n", "<C-d>", "<C-d>zz")                     -- Scroll down and center
+vim.keymap.set("n", "<C-u>", "<C-u>zz")                     -- Scroll up and center
 
 -- Window Resizing
 vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
@@ -26,11 +26,11 @@ vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increa
 -- Buffer Navigation
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz") -- Next location in the location list
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz") -- Previous location in the location list
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz") -- Next item in the quickfix list
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz") -- Previous item in the quickfix list
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")     -- Next item in the quickfix list
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")     -- Previous item in the quickfix list
 
 -- Clipboard Management
-vim.keymap.set("x", "<leader>p", [["_dP]]) -- Paste without modifying clipboard
+vim.keymap.set("x", "<leader>p", [["_dP]])         -- Paste without modifying clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- Yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]) -- Delete without modifying clipboard
 
@@ -38,9 +38,9 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]) -- Delete without modifying c
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 
 -- Miscellaneous
-vim.keymap.set("n", "Q", "<nop>") -- Disable macro recording
+vim.keymap.set("n", "Q", "<nop>")                         -- Disable macro recording
 vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>") -- Restart LSP
-vim.keymap.set("n", ",c", "<CMD>bp|bd #<CR>") -- Close current buffer and switch to previous
+vim.keymap.set("n", ",c", "<CMD>bp|bd #<CR>")             -- Close current buffer and switch to previous
 
 -- Visual Mode Movements
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- Move selected text down
@@ -72,3 +72,8 @@ vim.keymap.set("n", "<leader>od", function()
 end, { desc = "Open Windows file explorer in current directory" })
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("n", "<leader>r", function()
+	local view = vim.fn.winsaveview()
+	vim.cmd([[keeppatterns %s/\s\+$//e]])
+	vim.fn.winrestview(view)
+end)
