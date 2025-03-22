@@ -28,7 +28,7 @@ if vim.g.neovide then
 end
 
 -- Theme
-vim.cmd.colorscheme("torte")
+vim.cmd.colorscheme("desert")
 
 vim.cmd([[
   highlight Normal ctermbg=none guibg=none
