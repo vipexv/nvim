@@ -59,11 +59,11 @@ require("lazy").setup({
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function(args)
-		local clients = vim.lsp.get_active_clients({ bufnr = args.buf })
+		local clients = vim.lsp.get_clients({ bufnr = args.buf })
 
 		for i = 1, #clients do
 			local client = clients[i]
-			if client.supports_method("textDocument/formatting") then
+			if client:supports_method("textDocument/formatting") then
 				vim.lsp.buf.format({
 					async = false,
 					filter = function(c) return c.id == client.id end,
