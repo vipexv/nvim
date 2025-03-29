@@ -1,11 +1,6 @@
 local fzf_lua = require("fzf-lua")
 local coq = require("coq")
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	focusable = false,
-	border = "rounded",
-})
-
 vim.lsp.inlay_hint.enable(true)
 
 vim.diagnostic.config({
