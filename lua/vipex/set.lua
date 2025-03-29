@@ -30,7 +30,7 @@ vim.opt.autoindent = true
 -- Tab and Shift Options
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 0
 vim.opt.expandtab = true
 
 -- Netrw Settings
